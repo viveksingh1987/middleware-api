@@ -1,0 +1,17 @@
+# Middleware 
+
+#### This repository consists of two backend services.
+    1. api-server: running on port 3000
+    2. xml-server: running on port 4000
+
+###### Start the services
+    $ docker compose up
+
+###### Flow
+    Request(http://localhot:3000/companies/1) -> api-server (port: 3000) -> xml-server(port: 4000) 
+
+##### Links
+    Access api specifications using the swagger UI
+    api-server: http://localhost:3000/api-docs/
+    xml-server: http://localhost:4000/api-docs/
+   

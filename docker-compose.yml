@@ -1,0 +1,18 @@
+services:
+  xml-server:
+    build:
+      context: ./xml-server
+      dockerfile: Dockerfile
+    container_name: xml-server
+    ports:
+      - "4000:4000"
+
+  api-server:
+    build:
+      context: ./api-server
+      dockerfile: Dockerfile
+    container_name: api-server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - xml-server

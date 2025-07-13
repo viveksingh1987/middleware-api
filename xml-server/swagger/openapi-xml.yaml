@@ -1,0 +1,55 @@
+openapi: "3.0.2"
+info:
+  title: MWNZ companies source XML
+  version: "1.0"
+  description: |
+    Your API uses this OpenAPI definition to serve a company
+    as static XML in the shape of `XmlCompany` (root element `<Data>`).
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /xml-api/{id}.xml:
+    get:
+      tags:
+        - Companies XML
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/XmlCompany"
+              examples:
+                MWNZ:
+                  value:
+                    id: 1
+                    name: MWNZ
+                    description: "..is awesome"
+                Other:
+                  value:
+                    id: 2
+                    name: Other
+                    description: "....is not"
+        "404":
+          description: Not Found
+
+components:
+  schemas:
+    XmlCompany:
+      type: object
+      xml:
+        name: Data
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
